@@ -38,6 +38,12 @@ class DB
             //Encode the data array of classes to json
             $json =  json_encode($classes_array);
         }
+        else
+        {
+            $json = json_encode(
+                array("message" => "No records found for " . $table_name)
+            );
+        }
 
         return $json;
     }
