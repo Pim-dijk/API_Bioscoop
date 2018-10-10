@@ -9,6 +9,7 @@ RewriteRule ^film/read$ film/read.php
 RewriteRule ^film/read/([0-9]+)$  film/read.php?id=$1
 RewriteRule ^film/create film/create.php
 RewriteRule ^film/edit/([0-9]+)$ film/edit.php?id=$1
+RewriteRule ^film/delete/([0-9]+)$ film/delete.php?id=$1
 
 # kaarten
 RewriteRule ^kaarten/read$ kaarten/read.php

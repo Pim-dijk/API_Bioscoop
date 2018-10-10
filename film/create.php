@@ -17,6 +17,7 @@ $array =  (array) $data;
 $db = new DB();
 $model = new Film($array);
 
+//{Table_name, class_name, id}
 $response = $db->create("Films", "film", $model);
 
 if($response){

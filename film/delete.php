@@ -6,7 +6,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// include database and object files
+// include database and object file
 include_once '../config/includes.php';
 
 if(!isset($_GET['id'])){
@@ -25,6 +25,7 @@ $array = (array) $data;
 
 $db = new DB();
 $model = new Film($array);
+
 // check that the $_GET['id'] matches the id in the object that was send
 if($id != $model->ID)
 {
@@ -34,18 +35,18 @@ if($id != $model->ID)
     exit;
 }
 
-//{Table_name, class_name, id}
-$response = $db->edit("Films", "film", $model, $id);
+//{Table_name, id}
+$response = $db->delete("Films", $id);
 
 if($response){
     echo '{';
-    echo '"message": "Film succesvol bijgewerkt."';
+    echo '"message": "Film succesvol verwijderd."';
     echo '}';
 }
 else
 {
     echo '{';
-    echo '"message": "ERROR: Film is niet bijgewerkt!."';
+    echo '"message": "ERROR: Film is niet verwijderd!."';
     echo '}';
 }
 ?>

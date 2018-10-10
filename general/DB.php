@@ -118,7 +118,7 @@ class DB
 
         // execute query
         $stmt->execute();
-        // Display a message based on succes or failure
+        // Return true or false
         if($stmt){
             return true;
         }
@@ -154,7 +154,7 @@ class DB
 
         // execute query
         $stmt->execute();
-        // Display a message based on succes or failure
+        // Return true or false
         if($stmt){
             return true;
         }
@@ -163,8 +163,27 @@ class DB
         }
     }
 
-    function delete($table_name, $class_name, $id){
+    function delete($table_name, $id){
+        // instantiate database and product object
+        $database = new Database();
+        $db = $database->getConnection();
 
+        // Create delete query with the id and table name
+        $query = "DELETE FROM " . $table_name . " WHERE ID = " . $id;
+
+        // prepare query statement
+        $stmt = $db->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        // Return true or false
+        if($stmt){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 ?>
