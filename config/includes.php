@@ -12,5 +12,8 @@ include_once '../objects/vestiging.php';
 include_once '../objects/zaal.php';
 //class that reads data from database
 include_once '../general/DB.php';
+//Authentication
+include_once '../general/authentication.php';
+include_once '../general/JWT.php';
 
 ?>

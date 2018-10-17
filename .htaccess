@@ -1,45 +1,22 @@
+Options -MultiViews
 RewriteEngine On
 
 # draaitijden
-#RewriteRule ^draaitijden/read$ draaitijden/read.php
-RewriteRule ^draaitijden/read$ general/read.php?page=draaitijden
-RewriteRule ^draaitijden/read/([0-9]+)$  draaitijden/read.php?id=$1
-RewriteRule ^draaitijden/create draaitijden/create.php
-RewriteRule ^draaitijden/edit/([0-9]+)$ draaitijden/edit.php?id=$1
-RewriteRule ^draaitijden/delete/([0-9]+)$ draaitijden/delete.php?id=$1
+
+RewriteRule ^draaitijden/([0-9]+)$ draaitijden/index.php?id=$1
 
 # film
-#RewriteRule ^film/read$ film/read.php
-RewriteRule ^film/read$ general/read.php?page=film
-RewriteRule ^film/read/([0-9]+)$  film/read.php?id=$1
-RewriteRule ^film/create film/create.php
-RewriteRule ^film/edit/([0-9]+)$ film/edit.php?id=$1
-RewriteRule ^film/delete/([0-9]+)$ film/delete.php?id=$1
+RewriteRule ^film/([0-9]+)$  film/index.php?id=$1
+
 
 # kaarten
-RewriteRule ^kaarten/read$ kaarten/read.php
-RewriteRule ^kaarten/read/([0-9]+)$  kaarten/read.php?id=$1
-RewriteRule ^kaarten/create kaarten/create.php
-RewriteRule ^kaarten/edit/([0-9]+)$ kaarten/edit.php?id=$1
-RewriteRule ^kaarten/delete/([0-9]+)$ kaarten/delete.php?id=$1
+RewriteRule ^kaarten/([0-9]+)$  kaarten/index.php?id=$1
 
 # medewerker
-RewriteRule ^medewerker/read$ medewerker/read.php
-RewriteRule ^medewerker/read/([0-9]+)$  medewerker/read.php?id=$1
-RewriteRule ^medewerker/create medewerker/create.php
-RewriteRule ^medewerker/edit/([0-9]+)$ medewerker/edit.php?id=$1
-RewriteRule ^medewerker/delete/([0-9]+)$ medewerker/delete.php?id=$1
+RewriteRule ^medewerker/([0-9]+)$  medewerker/index.php?id=$1
 
 # vestging
-RewriteRule ^vestiging/read$ vestiging/read.php
-RewriteRule ^vestiging/read/([0-9]+)$  vestiging/read.php?id=$1
-RewriteRule ^vestiging/create vestiging/create.php
-RewriteRule ^vestiging/edit/([0-9]+)$ vestiging/edit.php?id=$1
-RewriteRule ^vestiging/delete/([0-9]+)$ vestiging/delete.php?id=$1
+RewriteRule ^vestiging/([0-9]+)$  vestiging/index.php?id=$1
 
 # zaal
-RewriteRule ^zaal/read$ zaal/read.php
-RewriteRule ^zaal/read/([0-9]+)$  zaal/read.php?id=$1
-RewriteRule ^zaal/create zaal/create.php
-RewriteRule ^zaal/edit/([0-9]+)$ zaal/edit.php?id=$1
-RewriteRule ^zaal/delete/([0-9]+)$ zaal/delete.php?id=$1
+RewriteRule ^zaal/([0-9]+)$  zaal/index.php?id=$1
