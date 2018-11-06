@@ -6,7 +6,7 @@ class Database{
     private $db_name = "pimdijk_bioscoop";
     private $username = "pimdijk_user";
     private $password = "password123";
-    public $conn;
+    private $conn;
 
     // get the database connection
     public function getConnection(){

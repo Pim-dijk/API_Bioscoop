@@ -5,7 +5,27 @@ class Authentication
     protected $api_token = "thisismycustomapikeystringtovalidatearequest";
     protected $JWT_token = "secret_server_key";
 
-    private $origin = array("graafschapcollege.nl", "localhost", "www.google.com");
+	function getLevel($headers) {
+
+        $readDB = new DB();
+        //Get data from database {Table_name, class_name}
+        $records = $readDB->read("permissions", "permissions");
+//        print_r($records);
+        $permissionsArray = json_decode($records);
+//        print_r($permissionsArray);
+//        exit;
+
+        // the origin from the request
+        $request_origin = $headers['Origin'];
+//        echo $request_origin;
+        foreach($permissionsArray as $object){
+//            echo $object->level;
+            if($request_origin == $object->origin){
+//                echo $origin->level;
+                return $object->level;
+            }
+        }
+    }
 
     function validate($headers){
         $jwt = new JWT();
@@ -42,16 +62,24 @@ class Authentication
         }
         else if(isset($headers['Origin'])) {
             $request_origin = $headers['Origin'];
-            if($this->validateOrigin($request_origin)){
-                echo '{';
-                echo '"x-api-key": "' . $this->getToken() .'"';
-                echo '}';
-                exit;
-            } else {
-                echo '{';
-                echo '"Error": "Access denied for this domain!"';
-                echo '}';
-                exit;
+
+            $readDB = new DB();
+            //Get data from database {Table_name, class_name}
+            $records = $readDB->read("permissions", "permissions");
+            $permissionsArray = json_decode($records);
+            foreach($permissionsArray as $origin){
+                if($request_origin == $origin->origin){
+                    echo '{';
+                    echo '"x-api-key": "' . $this->getToken() .'"';
+                    echo '}';
+                    exit;
+                }
+                else{
+                    echo '{';
+                    echo '"Error": "Access denied for this domain!"';
+                    echo '}';
+                    exit;
+                }
             }
         }
         else{
@@ -70,8 +98,8 @@ class Authentication
         return false;
     }
 
-    private function validateOrigin($origin){
-        if(in_array($origin, $this->origin)){
+    private function validateOrigin($origin, $originArray){
+        if(in_array($origin, $originArray)){
             return true;
         }
         return false;

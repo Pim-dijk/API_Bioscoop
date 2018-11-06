@@ -10,6 +10,7 @@ class DB
      * @param $class_name
      * @return string
      */
+
     function read($table_name, $class_name){
 
         // instantiate database and product object

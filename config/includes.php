@@ -10,6 +10,7 @@ include_once '../objects/kaarten.php';
 include_once '../objects/medewerker.php';
 include_once '../objects/vestiging.php';
 include_once '../objects/zaal.php';
+include_once '../objects/permissions.php';
 //class that reads data from database
 include_once '../general/DB.php';
 //Authentication
